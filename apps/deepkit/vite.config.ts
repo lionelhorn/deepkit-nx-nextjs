@@ -59,8 +59,9 @@ export default defineConfig(({ mode }): UserConfig => {
         }
       }),
       tsconfigPaths({
-        root: "../.."
-        // parseNative: true,
+        root: "../..",
+        // Workaround code not running : https://github.com/aleclarson/vite-tsconfig-paths/issues/137#issuecomment-1974828940
+        parseNative: true,
       })
     ]
   };
