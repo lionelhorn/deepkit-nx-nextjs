@@ -1,0 +1,40 @@
+{
+  "name": "deepkit",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/deepkit/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": [
+        "{options.outputFile}"
+      ]
+    },
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/apps/deepkit",
+        "main": "apps/deepkit/src/index.ts",
+        "tsConfig": "apps/deepkit/tsconfig.lib.json"
+      }
+    },
+    "dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/deepkit",
+        "command": "vite-node --config=vite.config.ts --root . src/app.ts"
+      }
+    },
+    "start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "dist/apps/deepkit",
+        "command": "node src/app.js"
+      }
+    }
+  },
+  "tags": []
+}

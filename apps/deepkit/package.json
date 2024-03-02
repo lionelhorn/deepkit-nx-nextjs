@@ -1,0 +1,10 @@
+{
+  "name": "@lionelhorn/deepkit",
+  "version": "0.0.1",
+  "dependencies": {
+    "tslib": "^2.6.2"
+  },
+  "type": "module",
+  "main": "./src/app.js",
+  "typings": "./src/app.d.ts"
+}
