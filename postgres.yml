@@ -1,0 +1,18 @@
+version: '3.9'
+
+volumes:
+  disposable-pg:
+
+services:
+  db:
+    container_name: "disposable-pg"
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: postgres
+    volumes:
+      - disposable-pg:/var/lib/postgresql/data/
+    ports:
+      - 5439:5432
