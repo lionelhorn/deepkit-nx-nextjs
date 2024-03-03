@@ -6,5 +6,6 @@
     "types": ["node"]
   },
   "exclude": ["vite.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"],
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts"],
+  "reflection": true
 }

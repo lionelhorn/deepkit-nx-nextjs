@@ -1,8 +1,12 @@
-import {MinLength, typeOf, validate} from "@deepkit/type";
+import {AutoIncrement, entity, MaxLength, MinLength, PrimaryKey, typeOf, validate} from "@deepkit/type";
 
-export interface User {
-	id: number;
-	username: string & MinLength<100>
+@entity.name('user')
+export class User {
+	id: number & PrimaryKey & AutoIncrement = 0;
+	username: string & MaxLength<100> = ""
+
+	constructor() {
+	}
 }
 
 export function testUser() {
