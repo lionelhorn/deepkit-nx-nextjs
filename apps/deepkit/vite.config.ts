@@ -1,15 +1,19 @@
-import { defineConfig, UserConfig } from "vite";
-import { deepkitType } from "@deepkit/vite";
-import { resolve } from "node:path";
+import {defineConfig, UserConfig} from "vite";
+import {deepkitType} from "@deepkit/vite";
+import {resolve} from "node:path";
 import tsconfigPaths from "vite-tsconfig-paths";
+import type {Plugin} from 'vite';
 
-export default defineConfig(({ mode }): UserConfig => {
+export default defineConfig(({mode}): UserConfig => {
   console.log("vite.config.ts", mode);
   console.log(__dirname);
 
   return {
     // Before putting esbuild to false, entity names and controllers in the debugger were being renamed.
     esbuild: false,
+    ssr: {
+      target: "node"
+    },
     build: {
       sourcemap: "inline",
       modulePreload: false,

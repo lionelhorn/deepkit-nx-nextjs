@@ -24,8 +24,23 @@
     "dev": {
       "executor": "nx:run-commands",
       "options": {
+        "env": {
+          "zzzDEBUG": "vite-tsconfig-paths",
+          "VITE_NODE_DEBUG_DUMP": "true"
+        },
         "cwd": "apps/deepkit",
         "command": "vite-node --config=vite.config.ts --root . src/app.ts"
+      }
+    },
+    "watch": {
+      "executor": "nx:run-commands",
+      "options": {
+        "env": {
+          "zzzDEBUG": "vite-tsconfig-paths",
+          "zzzVITE_NODE_DEBUG_DUMP": "true"
+        },
+        "cwd": "apps/deepkit",
+        "command": "vite-node -w --config=vite.config.ts --root . src/app.ts"
       }
     },
     "start": {
