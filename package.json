@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "postinstall": "deepkit-type-install && node patches\\patch-micromatch.mjs"
+    "postinstall": "deepkit-type-install && node patches/patch-micromatch.mjs"
   },
   "private": true,
   "dependencies": {
@@ -86,5 +86,8 @@
     "patchedDependencies": {
       "typescript@5.3.3": "patches/typescript@5.3.3.patch"
     }
+  },
+  "stackblitz": {
+    "startCommand": "cd packages/utils && vitest"
   }
 }
