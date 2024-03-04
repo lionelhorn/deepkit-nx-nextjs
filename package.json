@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "postinstall": "deepkit-type-install"
+    "postinstall": "deepkit-type-install && node patches\\patch-micromatch.mjs"
   },
   "private": true,
   "dependencies": {
