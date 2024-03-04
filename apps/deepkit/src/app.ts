@@ -48,9 +48,6 @@ if (import.meta.hot) {
     const server = app.get(ApplicationServer);
     console.log("[vite] Stopping deepkit server")
     await server.close(true);
-    // TODO: when https://github.com/deepkit/deepkit-framework/commit/69c56ebaa4c80bc612d784b84011d4a557f2853c
-    // is released, remove line below
-    await app.dispatch(onAppShutdown)
   });
 }
 

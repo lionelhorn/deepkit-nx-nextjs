@@ -2,7 +2,6 @@ import {defineConfig, UserConfig} from "vite";
 import {deepkitType} from "@deepkit/vite";
 import {resolve} from "node:path";
 import tsconfigPaths from "vite-tsconfig-paths";
-import type {Plugin} from 'vite';
 
 export default defineConfig(({mode}): UserConfig => {
   console.log("vite.config.ts", mode);

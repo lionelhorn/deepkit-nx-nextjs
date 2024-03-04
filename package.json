@@ -33,7 +33,7 @@
     "@deepkit/type-compiler": "^1.0.1-alpha.139",
     "@deepkit/vite": "^1.0.1-alpha.139",
     "@deepkit/workflow": "^1.0.1-alpha.140",
-    "next": "14.0.4",
+    "next": "14.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tslib": "^2.6.2"
@@ -64,7 +64,7 @@
     "@typescript-eslint/parser": "^6.21.0",
     "babel-jest": "^29.7.0",
     "eslint": "~8.48.0",
-    "eslint-config-next": "14.0.4",
+    "eslint-config-next": "14.1.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "2.27.5",
     "eslint-plugin-jsx-a11y": "6.7.1",
@@ -79,9 +79,9 @@
     "typescript": "5.3.3",
     "vite": "5.1.4",
     "vite-plugin-inspect": "0.8.3",
-    "vite-tsconfig-paths": "4.3.1"
+    "vite-tsconfig-paths": "4.3.1",
+    "vitest": "0.34.6"
   },
-  "reflection": "true",
   "pnpm": {
     "patchedDependencies": {
       "typescript@5.3.3": "patches/typescript@5.3.3.patch"

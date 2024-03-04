@@ -1,6 +1,11 @@
 {
   "name": "@lionelhorn/utils",
   "version": "0.0.1",
-  "dependencies": {  },
-  "reflection": true
+  "type": "module",
+  "sideEffects": false,
+  "typings": "./src/index.d.ts",
+  "exports": {
+    ".": "./src/index.js",
+    "./lib/*": "./src/lib/*"
+  }
 }
