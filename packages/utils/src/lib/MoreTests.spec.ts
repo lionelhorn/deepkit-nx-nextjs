@@ -1,13 +1,23 @@
 import {DirectClient, rpc, RpcKernel} from "@deepkit/rpc";
-import { expect, test } from "vitest";
+import {expect, test} from "vitest";
 
 test("mj parcel search via rpc deserialization", async () => {
+  class GeoLatLng {
+    constructor(public lat: number, public lng: number) {
+    }
+  }
+
   class GeoLocation {
     locality?: string;
     postalCode?: string;
+    coords?: GeoLatLng
 
     hasCoords() {
       return true;
+    }
+
+    setCoords(coords: GeoLatLng) {
+      this.coords = coords;
     }
   }
 
