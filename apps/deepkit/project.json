@@ -26,7 +26,7 @@
       "options": {
         "env": {
           "zzzDEBUG": "vite-tsconfig-paths",
-          "VITE_NODE_DEBUG_DUMP": "true"
+          "zzzVITE_NODE_DEBUG_DUMP": "true"
         },
         "cwd": "apps/deepkit",
         "command": "vite-node --config=vite.config.ts --root . src/app.ts"
