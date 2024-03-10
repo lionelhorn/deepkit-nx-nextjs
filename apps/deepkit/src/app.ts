@@ -1,25 +1,9 @@
 /// <reference types="vite/client" />
 import {ApiConsoleModule} from '@deepkit/api-console-module';
-import {App, onAppShutdown} from '@deepkit/app';
-import {ApplicationServer, FrameworkModule, onServerMainBootstrapDone, onServerShutdown} from '@deepkit/framework';
-import {LoggerInterface} from "@deepkit/logger";
-import {eventDispatcher} from "@deepkit/event";
-import {CurrentDatabase, UserController} from "@lionelhorn/utils";
+import {App} from '@deepkit/app';
+import {ApplicationServer, FrameworkModule} from '@deepkit/framework';
+import {UserController} from "@lionelhorn/utils";
 import {ApolloGraphQLModule} from "@deepkit-graphql/apollo";
-
-class ServerListener {
-  constructor(private database: CurrentDatabase, private logger: LoggerInterface) {
-  }
-
-  @eventDispatcher.listen(onServerMainBootstrapDone)
-  async onMainBoostrap() {
-    await this.database.migrate();
-  }
-
-  @eventDispatcher.listen(onServerShutdown)
-  onServerShutdown() {
-  }
-}
 
 const app = new App({
   providers: [],
@@ -45,13 +29,4 @@ const app = new App({
 
 app.loadConfigFromEnv({prefix: 'APP_'});
 app.get(ApplicationServer).start()
-
-if (import.meta.hot) {
-  import.meta.hot.on("vite:beforeFullReload", async () => {
-    const server = app.get(ApplicationServer);
-    console.log("[vite] Stopping deepkit server")
-    await server.close(true);
-  });
-}
-
 
