@@ -89,6 +89,6 @@
     }
   },
   "stackblitz": {
-    "startCommand": "nx run deepkit:serve"
+    "startCommand": "nx run deepkit:dev"
   }
 }
