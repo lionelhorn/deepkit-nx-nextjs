@@ -5,6 +5,7 @@ import {ApplicationServer, FrameworkModule, onServerMainBootstrapDone, onServerS
 import {LoggerInterface} from "@deepkit/logger";
 import {eventDispatcher} from "@deepkit/event";
 import {CurrentDatabase, UserController} from "@lionelhorn/utils";
+import {ApolloGraphQLModule} from "@deepkit-graphql/apollo";
 
 class ServerListener {
   constructor(private database: CurrentDatabase, private logger: LoggerInterface) {
@@ -21,11 +22,10 @@ class ServerListener {
 }
 
 const app = new App({
-  providers: [CurrentDatabase],
-  listeners: [ServerListener],
+  providers: [],
+  listeners: [],
   controllers: [
     UserController
-    // , MyOrmBrowserController
   ],
   imports: [
     new FrameworkModule({
@@ -37,6 +37,9 @@ const app = new App({
     new ApiConsoleModule({
       path: '/api'
     }),
+    new ApolloGraphQLModule({
+      introspection: true
+    })
   ]
 });
 

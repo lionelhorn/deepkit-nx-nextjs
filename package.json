@@ -7,6 +7,7 @@
   },
   "private": true,
   "dependencies": {
+    "@deepkit-graphql/apollo": "^0.2.12",
     "@deepkit/api-console-module": "^1.0.1-alpha.140",
     "@deepkit/app": "^1.0.1-alpha.140",
     "@deepkit/broker": "^1.0.1-alpha.140",
@@ -88,6 +89,6 @@
     }
   },
   "stackblitz": {
-    "startCommand": "cd packages/utils && vitest"
+    "startCommand": "nx run deepkit:serve"
   }
 }
