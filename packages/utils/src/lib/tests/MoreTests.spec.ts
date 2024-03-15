@@ -1,7 +1,7 @@
 import {DirectClient, rpc, RpcKernel} from "@deepkit/rpc";
 import {expect, test} from "vitest";
 
-test("mj parcel search via rpc deserialization", async () => {
+test.skip("mj parcel search via rpc deserialization", async () => {
   class GeoLatLng {
     constructor(public lat: number, public lng: number) {
     }

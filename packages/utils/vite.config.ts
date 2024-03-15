@@ -6,17 +6,13 @@ import { resolve } from "node:path";
 
 // https://vitejs.dev/config/
 
-console.log("vitest.config.ts", __dirname);
+console.log("vite.config.ts", __dirname);
 
 export default defineConfig({
-  test: {
-    globals: true,
-    environment: "happy-dom"
-  },
   plugins: [
     react(),
     deepkitType({
-      tsConfig: resolve(__dirname, "tsconfig.spec.json"),
+      tsConfig: resolve(__dirname, "tsconfig.json"),
       compilerOptions: {
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
@@ -43,6 +39,8 @@ export default defineConfig({
     })
   ],
   define: {
+    //https://github.com/benjamine/jsondiffpatch/issues/315
+    process: {}, //fix chalk error which is used by jsondiffpatch
     fs: {
       // Allow serving files from one level up to the project root
       allow: [

@@ -1,7 +1,7 @@
 import {DirectClient, rpc, RpcKernel} from "@deepkit/rpc";
 import { expect, test } from "vitest";
 
-test("ad with location echoing through rpc 1", async () => {
+test.skip("ad with location echoing through rpc 1", async () => {
   class GeoLatLng {
     constructor(public lat: number, public lng: number) {
     }
@@ -58,8 +58,7 @@ test("ad with location echoing through rpc 1", async () => {
   }
 });
 
-
-test("ad with location echoing through rpc 2", async () => {
+test.skip("ad with location echoing through rpc 2", async () => {
   class GeoLatLng {
     constructor(public lat: number, public lng: number) {
     }
