@@ -18,21 +18,14 @@
         ]
       }
     },
-    "test:vitest-ui": {
+    "test:ui": {
       "executor": "nx:run-commands",
       "options": {
         "cwd": "packages/utils",
         "command": "vitest --ui"
       }
     },
-    "test:vitest-watch": {
-      "executor": "nx:run-commands",
-      "options": {
-        "cwd": "packages/utils",
-        "command": "vitest --watch"
-      }
-    },
-    "test:vitest": {
+    "test": {
       "executor": "nx:run-commands",
       "env": {
         "DEBUG": "deepkit"

@@ -5,7 +5,6 @@ import {cast} from "@deepkit/type";
 
 export const dummyUser = cast<User>({first: "John", last: "Do", age: 42});
 
-@rpc.group("Tests")
 @rpc.controller("UserController")
 export class UserController {
 

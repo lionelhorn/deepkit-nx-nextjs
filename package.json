@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "postinstall": "deepkit-type-install && node patches/patch-micromatch.mjs"
+    "postinstall": "deepkit-type-install && node patches/patch-micromatch.mjs",
+    "test": "cd packages/utils && vitest",
+    "test:ui": "cd packages/utils && vitest --ui"
   },
   "private": true,
   "dependencies": {
@@ -85,8 +87,7 @@
     "vite": "5.0.12",
     "vite-plugin-inspect": "0.8.3",
     "vite-tsconfig-paths": "4.3.1",
-    "vitest": "^1.3.1",
-    "@types/node": "^20.11.28"
+    "vitest": "^1.4.0"
   },
   "pnpm": {
     "patchedDependencies": {
