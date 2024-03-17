@@ -6,12 +6,16 @@
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/packages/utils",
         "main": "packages/utils/src/index.ts",
         "tsConfig": "packages/utils/tsconfig.lib.json",
-        "assets": ["packages/utils/*.md"]
+        "assets": [
+          "packages/utils/*.md"
+        ]
       }
     },
     "test:vitest-ui": {
@@ -30,6 +34,9 @@
     },
     "test:vitest": {
       "executor": "nx:run-commands",
+      "env": {
+        "DEBUG": "deepkit"
+      },
       "options": {
         "cwd": "packages/utils",
         "command": "vitest --run"

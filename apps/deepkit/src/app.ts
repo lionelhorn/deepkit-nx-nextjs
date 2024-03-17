@@ -6,13 +6,12 @@ import {LoggerInterface} from "@deepkit/logger";
 import {eventDispatcher} from "@deepkit/event";
 import {CurrentDatabase, UserController} from "@lionelhorn/utils";
 
-class ServerListener {
+class EventListener {
   constructor(private database: CurrentDatabase, private logger: LoggerInterface) {
   }
 
   @eventDispatcher.listen(onServerMainBootstrapDone)
   async onMainBoostrap() {
-    await this.database.migrate();
   }
 
   @eventDispatcher.listen(onServerShutdown)
@@ -22,10 +21,9 @@ class ServerListener {
 
 const app = new App({
   providers: [CurrentDatabase],
-  listeners: [ServerListener],
+  listeners: [EventListener],
   controllers: [
     UserController
-    // , MyOrmBrowserController
   ],
   imports: [
     new FrameworkModule({

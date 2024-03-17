@@ -1,0 +1,30 @@
+diff --git a/dist/cjs/src/resolver.js b/dist/cjs/src/resolver.js
+index 4c03f1f83b14150146c3cfc63ad9ca1a1acee056..29afb10c66bc452982742f8591f4d3a029e95cd0 100644
+--- a/dist/cjs/src/resolver.js
++++ b/dist/cjs/src/resolver.js
+@@ -84,8 +84,8 @@ class Resolver {
+         const result = this.resolveImpl(modulePath, sourceFile);
+         if (!result)
+             return;
+-        // only .ts and .d.ts files are supported
+-        if (!result.resolvedFileName.endsWith('.ts') && !result.resolvedFileName.endsWith('.d.ts')) {
++        // only .ts, .tsx and .d.ts files are supported
++        if (!result.resolvedFileName.endsWith('.ts') && !result.resolvedFileName.endsWith('.tsx') && !result.resolvedFileName.endsWith('.d.ts')) {
+             return;
+         }
+         const fileName = result.resolvedFileName;
+diff --git a/dist/esm/src/resolver.js b/dist/esm/src/resolver.js
+index abd5f4ba6f399982149ebe898721901d48c3b426..bcd07f7be0e47f2aa79692a875004eba9b24d42b 100644
+--- a/dist/esm/src/resolver.js
++++ b/dist/esm/src/resolver.js
+@@ -54,8 +54,8 @@ export class Resolver {
+         const result = this.resolveImpl(modulePath, sourceFile);
+         if (!result)
+             return;
+-        // only .ts and .d.ts files are supported
+-        if (!result.resolvedFileName.endsWith('.ts') && !result.resolvedFileName.endsWith('.d.ts')) {
++        // only .ts, .tsx and .d.ts files are supported
++        if (!result.resolvedFileName.endsWith('.ts') && !result.resolvedFileName.endsWith('.tsx') && !result.resolvedFileName.endsWith('.d.ts')) {
+             return;
+         }
+         const fileName = result.resolvedFileName;
