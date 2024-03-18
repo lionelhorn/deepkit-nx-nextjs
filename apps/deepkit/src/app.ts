@@ -1,29 +1,14 @@
 /// <reference types="vite/client" />
 import {ApiConsoleModule} from '@deepkit/api-console-module';
-import {App, onAppShutdown} from '@deepkit/app';
-import {ApplicationServer, FrameworkModule, onServerMainBootstrapDone, onServerShutdown} from '@deepkit/framework';
-import {LoggerInterface} from "@deepkit/logger";
-import {eventDispatcher} from "@deepkit/event";
-import {CurrentDatabase, UserController} from "@lionelhorn/utils";
+import {App} from '@deepkit/app';
+import {ApplicationServer, FrameworkModule} from '@deepkit/framework';
+import {CurrentDatabase, } from "@lionelhorn/utils";
 
-class EventListener {
-  constructor(private database: CurrentDatabase, private logger: LoggerInterface) {
-  }
-
-  @eventDispatcher.listen(onServerMainBootstrapDone)
-  async onMainBoostrap() {
-  }
-
-  @eventDispatcher.listen(onServerShutdown)
-  onServerShutdown() {
-  }
-}
 
 const app = new App({
   providers: [CurrentDatabase],
-  listeners: [EventListener],
+  listeners: [],
   controllers: [
-    UserController
   ],
   imports: [
     new FrameworkModule({

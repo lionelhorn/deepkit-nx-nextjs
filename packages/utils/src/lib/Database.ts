@@ -1,6 +1,7 @@
 import {Database} from "@deepkit/orm";
-import { User } from "./User.js";
-import { PostgresDatabaseAdapter } from "@deepkit/postgres";
+import {User} from "./User.js";
+import {parseConnectionString, PostgresDatabaseAdapter} from "@deepkit/postgres";
+import {PoolConfig} from "pg";
 
 const defaultSchemas = [
   User
@@ -8,15 +9,14 @@ const defaultSchemas = [
 
 export class PostgresDatabase extends Database {
   constructor(schemas: Array<any>) {
-    const config = {
-      host: process?.env["DB_HOST"] ?? "localhost",
-      port: +(process?.env["DB_PORT"] ?? 5439),
-      user: process?.env["DB_USER"] ?? "postgres",
-      password: process?.env["DB_PASSWD"] ?? "root",
-      database: process?.env["DB_DATABASE"] ?? "postgres"
-    };
-    console.log(config)
+    let connectionString = "postgres://postgres:root@localhost:5439/postgres";
+    let config = parseConnectionString(connectionString);
 
+    if (process?.env?.PG_CONNECTION_STRING) {
+      config = parseConnectionString(process.env.PG_CONNECTION_STRING);
+    }
+
+    console.log(config)
     super(new PostgresDatabaseAdapter(config), schemas);
   }
 }
