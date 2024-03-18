@@ -4,7 +4,7 @@ import {ApplicationServer, FrameworkModule} from "@deepkit/framework";
 import {ApiConsoleModule} from "@deepkit/api-console-module";
 import {DatabaseSession, onDatabaseError} from "@deepkit/orm";
 import {describe, expect, test} from "vitest";
-import {person, Person} from "./types";
+import {Person} from "./types";
 import {rpc, RpcWebSocketClient} from "@deepkit/rpc";
 import {sleep} from "@deepkit/core";
 
@@ -52,19 +52,21 @@ describe("deepkit app with event listener", () => {
     app.loadConfigFromEnv({prefix: 'APP_'});
     await app.get(ApplicationServer).start()
 
-    await db.persist(person);
+    await db.persist(Person.createDummy());
     expect(events).toHaveLength(3);
     expect(errorEvents).toHaveLength(0);
   });
 
   test("db events & rpc", async () => {
+    const person = Person.createDummy();
+
     @rpc.controller("RpcUserController")
     class RpcUserController {
       constructor(private db: CurrentDatabase) {
       }
 
       @rpc.action()
-      async addUser() {
+      async insertPerson() {
         await this.db.persist(person);
         return person;
       }
@@ -92,7 +94,7 @@ describe("deepkit app with event listener", () => {
 
     const app = new App({
       providers: [
-        {provide: CurrentDatabase, useValue: db},
+        {provide: CurrentDatabase, useValue: db, scope: 'rpc'},
       ],
       controllers: [
         RpcUserController
@@ -107,7 +109,6 @@ describe("deepkit app with event listener", () => {
         }),
         new ApiConsoleModule({
           path: '/api',
-
         }),
       ]
     });
@@ -118,11 +119,9 @@ describe("deepkit app with event listener", () => {
     const rc = client.controller<RpcUserController>("RpcUserController");
 
     {
-      const usersBefore = await db.query(Person).count();
-      const echoed = await rc.addUser();
+      const echoed = await rc.insertPerson();
       expect(echoed.firstName).toEqual(person.firstName);
 
-      await sleep(2);
       expect(events).toHaveLength(3);
       expect(errorEvents).toHaveLength(0);
     }

@@ -3,13 +3,15 @@ import {AutoIncrement, cast, entity, MinLength, Positive, PrimaryKey} from "@dee
 @entity.name("Person")
 export class Person {
   id: number & PrimaryKey & AutoIncrement = 0;
-  firstName!: string & MinLength<2>;
-  lastName!: string;
-  age!: number & Positive;
-}
+  firstName?: string & MinLength<2>;
+  lastName?: string;
+  age?: number & Positive;
 
-export const person = cast<Person>({
-  firstName: "John",
-  lastName: "Doe",
-  age: 30
-} as Person);
+  static createDummy(){
+    const p = new Person();
+    p.firstName = "John";
+    p.lastName = "Doe";
+    p.age = 42
+    return p;
+  }
+}
